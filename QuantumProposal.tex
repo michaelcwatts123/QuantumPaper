@@ -1,0 +1,127 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{physics}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{A Critical Comparison of Quantum versus Classical Data Science
+Algorithms\\
+
+
+}
+
+\author{\IEEEauthorblockN{Michael Watts}
+\IEEEauthorblockA{\textit{Computer Science Department} \\
+\textit{Southern Methodist University}\\
+Dallas, United States of America \\
+mcwatts@smu.edu}
+
+
+}
+
+\maketitle
+
+\begin{abstract}
+This document is a model and instructions for \LaTeX.
+This and the IEEEtran.cls file define the components of your paper [title, text, heads, etc.]. *CRITICAL: Do Not Use Symbols, Special Characters, Footnotes, 
+or Math in Paper Title or Abstract.
+\end{abstract}
+
+\begin{IEEEkeywords}
+component, formatting, style, styling, insert
+\end{IEEEkeywords}
+
+\section{Introduction}
+As the field of quantum computing expands, new and sophisticated quantum operations are invented. With these new operations we can not only formulate novel quantum algorithms but also mirror classic algorithms in quantum systems. One emerging field of this algorithmic study is Quantum Data Science, which attempts to create quantum versions of classic data science algorithms. These quantum parallels can often take advantage of unique properties of their data and operators in order to increase their computational efficiency. Several fundamental data science algorithms already have quantum parallels, including but not limited to: K-Means Clustering, Support Vector Machines, Principal Component Analysis, and Decision Trees \cite{b1} \cite{b2} \cite{b3} \cite{b4}. 
+\newline
+\indent In this paper, we will be examining the strengths and weakness of various quantum analogs to classic data science algorithms. Surveys and comparisons of quantum and classic data science algorithms have been preformed numerous times in the past. Schuld, Sinayskiy, and Petruccione in 2014 survyed various quantum versions of classic data science algorithms such as quantum Markov models and Quantum Bayesian classifiers. However, in this work they only do high level examinations of the mathematics behind these various methods, without going into explicit detail of either the derivations of the mathematics powering these models or exact possible implementations of them on quantum hardware \cite{b5}.
+\newline
+\indent Kopczyk continues this survey work. In his paper, he also demonstrates the exact mathematics powering several popular quantum subroutines. He then proceeds to show the mathematics for quantum data science algorithms, building off of these various subroutines. Kopczyk also beings to examine the algorithmic complexity of these these quantum algorithms compared to their classic equivalents. He informs the reader of possible real world implementation concerns of the analyzed algorithms \cite{b6}. 
+\newline
+\indent Biamonte et al. furthers this focus on possible implementation in their survey work. They provide high level surveys of various quantum data science algorithm implementations such as Support Vector Machines and Boltzmann Machines. They also begin to examine how data can be read into quantum computers, different kinds of quantum processors, and the design and control of different quantum systems.\cite{b7}
+\newline
+\indent Finally Shrivastava, Soni, and Rasool gives high level algorithmic block diagrams of various quantum computing methods. They also provide more formal exact deviations for the algorithmic complexity of each examined quantum algorithm. There most important extension of the work is a focus on not only the quantum data science algorithms but also on possible applications of the current implementations. This helps bound the author in a much more reality based examination of the algorithms.\cite{b8}    
+\newline
+\indent In this paper, we plan to continue expounding on prior survey research. We intended to do this by not only comparing the algorithmic complexity of quantum and classic data science algorithms but also by examining the complexities relative to the limitations of the respective algorithms. This will involve examining the various properties of each algorithm with respect to the improvements provided by its quantum implementation. We will also evaluate the practicality of implementation of these quantum algorithms. All of this is in effort to conclude if the field of Quantum Data Science is mature enough to begin the transition into mainstream usage. This paper will ultimately serve as a benchmark on the the ability of Quantum Data Science to implement and improve basic algorithms of Classic Data Science. The rest of the paper is as follows: In Section II, we introduce important background high level information on Quantum Computing as well as each of the Classic Data Science algorithms examined in this paper. In Section 3, we derive quantum equivalents to the classic algorithms introduced in Section 2. In Section 4, we evaluate classic and quantum algorithms against one another as well as quantum algorithm improvements against the properties of the algorithms. In Section 5, we draw our final conclusions about the current state of Quantum Data Science.    
+\section{Background Information}
+
+\subsection{Quantum Computing}
+Lorem Ipsum
+\subsubsection{Quantum Representation of Data}
+Lorem Ipsum
+\subsubsection{Quantum Operations as Observables}
+Lorem Ipsum
+\subsubsection{Measurement of Quantum Data}
+Lorem Ipsum
+
+\subsection{Classic Data Science Algorithms}
+Lorem Ipsum
+\subsubsection{K-Means Clustering}
+Lorem Ipsum
+\subsubsection{Support Vector Machines}
+Lorem Ipsum
+\subsubsection{Principal Component Analysis}
+Lorem Ipsum
+\subsubsection{Decision Trees}
+Lorem Ipsum
+
+
+
+\section{Derivation of Quantum Data Science Algorithms}
+Lorem Ipsum
+\subsection{Quantum K-Means}
+Lorem Ipsum
+\subsection{Quantum Support Vector Machines}
+Lorem Ipsum
+\subsection{Quantum Principal Component Analysis}
+Lorem Ipsum
+\subsection{Quantum Decision Trees}
+Lorem Ipsum
+
+
+\subsection{Results}
+Lorem Ipsum
+\subsection{K-Means}
+Lorem Ipsum
+\subsection{Support Vector Machines}
+Lorem Ipsum
+\subsection{Principal Component Analysis}
+Lorem Ipsum
+\subsection{Decision Trees}
+Lorem Ipsum
+
+\section{Conclusion}
+Lorem Ipsum
+
+
+\begin{thebibliography}{00}
+
+\bibitem{b1}Jing Xiao, YuPing Yan, Jun Zhang, Yong Tang.”A quantum-inspired genetic algorithm for k-means clustering”. Elsevier
+journal (37), 4966-4973. 
+
+\bibitem{b2}P. Rebentrost, M. Mohseni, and S. Lloyd, “Quantum support vector machine for big data classification,” Phys. Rev. Lett., vol. 113, no. 13, p. 130503, Sep. 2014, doi: 10.1103/PhysRevLett.113.130503.
+
+\bibitem{b3} S. Lloyd, M. Mohseni, and P. Rebentrost, Quantum principal component analysis, arXiv preprint 1307.0401 (2013).
+
+\bibitem{b4}S. Lu and S. L. Braunstein, “Quantum decision tree classifier,” Quantum Inf Process, vol. 13, no. 3, pp. 757–770, Mar. 2014, doi: 10.1007/s11128-013-0687-5.
+
+\bibitem{b5}M. Schuld, I. Sinayskiy, and F. Petruccione, “An introduction to quantum machine learning,” Contemporary Physics, vol. 56, no. 2, pp. 172–185, Apr. 2015, doi: 10.1080/00107514.2014.964942.
+
+\bibitem{b6}D. Kopczyk, “Quantum machine learning for data scientists,” arXiv:1804.10068 [quant-ph], Apr. 2018, Accessed: Apr. 25, 2020. [Online]. Available: http://arxiv.org/abs/1804.10068.
+
+\bibitem{b7}J. Biamonte, P. Wittek, N. Pancotti, P. Rebentrost, N. Wiebe, and S. Lloyd, “Quantum Machine Learning,” Nature, vol. 549, no. 7671, pp. 195–202, Sep. 2017, doi: 10.1038/nature23474.
+
+\bibitem{b8}P. Shrivastava, K. K. Soni, and A. Rasool, “Classical Equivalent Quantum Unsupervised Learning Algorithms,” Procedia Computer Science, vol. 167, pp. 1849–1860, Jan. 2020, doi: 10.1016/j.procs.2020.03.204.
+
+\end{thebibliography}
+
+
+\end{document}
