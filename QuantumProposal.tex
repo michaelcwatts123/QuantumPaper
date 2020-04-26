@@ -8,6 +8,7 @@
 \usepackage{textcomp}
 \usepackage{xcolor}
 \usepackage{physics}
+
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
@@ -52,11 +53,87 @@ As the field of quantum computing expands, new and sophisticated quantum operati
 \section{Background Information}
 
 \subsection{Quantum Computing}
-Basic intro, drop word super position in here
+In order to properly understand these algorithms, first we must understand the basics of quantum computing. Quantum algorithms tend to provide large computational speed ups to computers due to the nature of their data representation. Due to quantum particles being held in superposition between multiple possible states, we can execute operations on multiple states at the same time \cite{b5}. In a classic setting, you have a Turing machine in a single state, which when feed an instruction, evolves into another single state \cite{b9}. In a quantum setting, you have a Turing machine existing in multiple states, that when feed an operation, can enter into multiple new states in parallel.   
 \subsubsection{Quantum Representation of Data}
-Pure Qubit and Density Matrix 
-\subsubsection{Quantum Operations as Observables}
-Operate on mixed state, keep mixed state
+We have already touched on how quantum bits or qubits represent data in a quantum system. We will formalize this representation here. A qubit can be thought of as a single classic bit that exists in a hybrid state between a 0 and a 1, known as a \emph{superposition} between 0 and 1. We represent that state in the following way:
+\begin{align*}
+\ket{\Psi} = \alpha\ket{0} + \beta\ket{1}
+\end{align*}
+In this form, $\alpha$ and $\beta$ are complex real numbers referred to as \emph{probability amplitudes}. According to a postulate of Quantum Mechanics know as Born's Rule, the probability that a quantum particle will collapse from its superposition into state 0 or state 1 is $|\alpha|^2$ and $|\beta|^2$ respectively. (Note measurement of quantum data will be described in a later section). In this form, the classic states 0 and 1 are described in \emph{Dirac Notation} as $\ket{0}$ and $\ket{1}$ where:
+\begin{align*}
+\ket{0}=\begin{vmatrix}
+1\\
+0\\
+\end{vmatrix}
+\ket{1}=\begin{vmatrix}
+0\\
+1\\
+\end{vmatrix}
+\end{align*}
+\indent However, qubits can also be represented in a \emph{Density Matrix} often referred to as $\rho$. This matrix represents a combination of various pure quantum states and is used when we are missing information on the state of the quantum system. For our sake, a pure quantum state is simply one where know the exact state of the qubit. We can create a density matrix for a quantum system to represent its information using all of its possible quantum states and the probability \emph{p} it is in that respective state \emph{$\ket{\psi}$} by the following equation: 
+\begin{align*}
+\rho = \sum_{i}  = p_i \ket{\psi_i} \otimes \bra{\psi_i}
+\end{align*}
+This combination of various pure states is referred to a \emph{mixed state}.\cite{b9}
+\subsubsection{Quantum Operations as Quantum Gates}
+The key piece of information to understand about Quantum Operations is, they operate on the qubit's superposition and maintain the superposition. For example if we have the qubit $\psi$ described as:
+\begin{align*}
+\ket{\Psi} = \alpha\ket{0} + \beta\ket{1}
+\end{align*}
+which we can rewrite in vector notation as:
+
+\begin{align*}
+\ket{\Psi} = \alpha\ket{0} + \beta\ket{1} \\
+ = \alpha \begin{vmatrix}
+1\\
+0\\
+\end{vmatrix} + \beta \begin{vmatrix}
+0\\
+1\\
+\end{vmatrix} \\
+=  \begin{vmatrix}
+\alpha\\
+0\\
+\end{vmatrix} +  \begin{vmatrix}
+0\\
+\beta\\
+\end{vmatrix} \\
+ =  \begin{vmatrix}
+\alpha\\
+\beta\\
+\end{vmatrix} 
+\end{align*}
+We can then proceed to apply the quantum not operator get to this piece of particle in superposition. 
+\begin{align*}
+    \emph{X} = \begin{vmatrix}
+    0 & 1 \\
+    1 & 0 \\
+    \end{vmatrix}
+\end{align*}
+This operator flips the probability amplitudes of the particle without collapsing its superposition.
+\begin{align*}
+    \emph{X} * \begin{vmatrix}
+\alpha\\
+\beta\\
+\end{vmatrix} = \begin{vmatrix}
+\beta\\
+\alpha\\
+\end{vmatrix} 
+\end{align*}
+Any matrix may be a valid quantum operator so long as it is unitary: $U^\dagger U = I$. This can be see with the quantum not operator: 
+\begin{align*}
+    \begin{vmatrix}
+    0 & 1 \\
+    1 & 0 \\
+    \end{vmatrix} * \begin{vmatrix}
+    0 & 1 \\
+    1 & 0 \\
+    \end{vmatrix} =
+    \begin{vmatrix}
+    1 & 0 \\
+    0 & 1 \\
+    \end{vmatrix}
+\end{align*}
 \subsubsection{Measurement of Quantum Data}
 Really just note they are destructive 
 
@@ -120,6 +197,8 @@ journal (37), 4966-4973.
 \bibitem{b7}J. Biamonte, P. Wittek, N. Pancotti, P. Rebentrost, N. Wiebe, and S. Lloyd, “Quantum Machine Learning,” Nature, vol. 549, no. 7671, pp. 195–202, Sep. 2017, doi: 10.1038/nature23474.
 
 \bibitem{b8}P. Shrivastava, K. K. Soni, and A. Rasool, “Classical Equivalent Quantum Unsupervised Learning Algorithms,” Procedia Computer Science, vol. 167, pp. 1849–1860, Jan. 2020, doi: 10.1016/j.procs.2020.03.204.
+
+\bibitem{b9} M. A. Nielsen and I. L. Chuang, Quantum computation and quantum information. Cambridge: Cambridge University Press, 2019.
 
 \end{thebibliography}
 
