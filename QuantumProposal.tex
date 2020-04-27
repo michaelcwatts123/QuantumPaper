@@ -1,6 +1,6 @@
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
-% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
@@ -13,8 +13,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{A Critical Comparison of Quantum versus Classical Data Science
-Algorithms\\
+\title{A Critical Comparison of Quantum versus Classic Data Science Algorithms\\
 
 
 }
@@ -31,7 +30,7 @@ mcwatts@smu.edu}
 \maketitle
 
 \begin{abstract}
-This paper will attempt to evaluate several quantum implementations of Classic Data Science algorithms in an effort to determine the maturity of the field of Quantum Data Science. We hope to show the viability of Quantum Data Science from a Classic Data Science perspective.  To do this we will not only examine the algorithmic complexities of Quantum Data Science algorithms but also their possible weakness and implementation constraints. To do this, we go through step by step methodology examination of the mathematics behind these methods. This will ideally motivate future research in the field to strength it and prepare it for mainstream adoption. 
+This paper will attempt to evaluate several quantum implementations of Classic Data Science algorithms in an effort to determine the maturity of the field of Quantum Data Science. We hope to show the viability of Quantum Data Science from a Classic Data Science perspective. To do this we will not only examine the algorithmic complexities of Quantum Data Science algorithms but also their possible weakness and implementation constraints. We will go through a step by step methodology examination of the mathematics behind each of these quantum implementations of algorithms. The goal of this work is to identify future research in the field to focus on to strength prepare Quantum Data Science for mainstream adoption in the future. 
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -39,29 +38,29 @@ Quantum Computing, Data Science, Unsupervised Learning, Supervised Learning, Dat
 \end{IEEEkeywords}
 
 \section{Introduction}
-As the field of quantum computing expands, new and sophisticated quantum operations are invented. With these new operations we can not only formulate novel quantum algorithms but also mirror classic algorithms in quantum systems. One emerging field of this algorithmic study is Quantum Data Science, which attempts to create quantum versions of classic data science algorithms. These quantum parallels can often take advantage of unique properties of their data and operators in order to increase their computational efficiency. Several fundamental data science algorithms already have quantum parallels, including but not limited to: K-Means Clustering, Support Vector Machines, Principal Component Analysis, and Decision Trees \cite{b1} \cite{b2} \cite{b3} \cite{b4}. 
+As the field of Quantum Computing expands, new and sophisticated quantum operations are invented. With these new operations, we can not only formulate novel quantum algorithms but also mirror classic algorithms in quantum systems. One emerging field of this algorithmic study is Quantum Data Science, which attempts to create quantum versions of classic Data Science algorithms. These quantum parallels can often take advantage of the unique properties of their data and operators in order to increase their computational efficiency. Several fundamental Data Science algorithms already have quantum parallels, including but not limited to: K-Means Clustering, Support Vector Machines, Principal Component Analysis, and Decision Trees \cite{b1} \cite{b2} \cite{b3} \cite{b4}. 
 \newline
-\indent In this paper, we will be examining the strengths and weakness of various quantum analogs to classic data science algorithms. Surveys and comparisons of quantum and classic data science algorithms have been preformed numerous times in the past. Schuld, Sinayskiy, and Petruccione in 2014 survyed various quantum versions of classic data science algorithms such as quantum Markov models and Quantum Bayesian classifiers. However, in this work they only do high level examinations of the mathematics behind these various methods, without going into explicit detail of either the derivations of the mathematics powering these models or exact possible implementations of them on quantum hardware \cite{b5}.
+\indent In this paper, we will be examining the strengths and weakness of various quantum analogs to classic Data Science algorithms. Surveys and comparisons of quantum and classic Data Science algorithms have been preformed numerous times in the past. Schuld, Sinayskiy, and Petruccione in 2014 survyed various quantum versions of classic Data Science algorithms such as quantum Markov models and Quantum Bayesian classifiers. However, in this work they only do high level examinations of the mathematics behind these various methods, without going into explicit detail of the mathematics derivations powering these models or exact possible implementations of the models on quantum hardware \cite{b5}.
 \newline
-\indent Kopczyk continues this survey work. In his paper, he also demonstrates the exact mathematics powering several popular quantum subroutines. He then proceeds to show the mathematics for quantum data science algorithms, building off of these various subroutines. Kopczyk also beings to examine the algorithmic complexity of these these quantum algorithms compared to their classic equivalents. He informs the reader of possible real world implementation concerns of the analyzed algorithms \cite{b6}. 
+\indent Kopczyk continues this survey work. In his paper, he also demonstrates the exact mathematics powering several popular quantum subroutines. He then proceeds to show the mathematics for Quantum Data Science algorithms, building off of these various subroutines. Kopczyk also beings to examine the algorithmic complexity of these these quantum algorithms compared to their classic equivalents. He informs the reader of possible real world implementation concerns of the analyzed algorithms \cite{b6}. 
 \newline
-\indent Biamonte et al. furthers this focus on possible implementation in their survey work. They provide high level surveys of various quantum data science algorithm implementations such as Support Vector Machines and Boltzmann Machines. They also begin to examine how data can be read into quantum computers, different kinds of quantum processors, and the design and control of different quantum systems.\cite{b7}
+\indent Biamonte et al. furthers this focus on possible implementation in their survey work. They provide high level surveys of various Quantum Data Science algorithm implementations such as: Support Vector Machines and Boltzmann Machines. They also begin to examine how data can be read into quantum computers, different kinds of quantum processors, and the design and control of different quantum systems.\cite{b7}
 \newline
-\indent Finally Shrivastava, Soni, and Rasool gives high level algorithmic block diagrams of various quantum computing methods. They also provide more formal exact deviations for the algorithmic complexity of each examined quantum algorithm. There most important extension of the work is a focus on not only the quantum data science algorithms but also on possible applications of the current implementations. This helps bound the author in a much more reality based examination of the algorithms.\cite{b8}    
+\indent Finally Shrivastava, Soni, and Rasool gives high level algorithmic block diagrams of various Quantum Computing methods. They also provide more formal exact deviations for the algorithmic complexity of each examined quantum algorithm. There most important extension of the work is a focus on not only the Quantum Data Science algorithms but also on possible applications of the current implementations. This helps bound the author in a much more reality based examination of the algorithms.\cite{b8}    
 \newline
-\indent In this paper, we plan to continue expounding on prior survey research. We intended to do this by not only comparing the algorithmic complexity of quantum and classic data science algorithms but also by examining the complexities relative to the limitations of the respective algorithms. This will involve examining the various properties of each algorithm with respect to the improvements provided by its quantum implementation. We will also evaluate the practicality of implementation of these quantum algorithms. All of this is in effort to conclude if the field of Quantum Data Science is mature enough to begin the transition into mainstream usage. 
+\indent In this paper, we plan to continue expounding on prior survey research. We intended to do this by not only comparing the algorithmic complexity of quantum and classic Data Science algorithms but also by examining the complexities relative to the limitations of the respective algorithms. This will involve examining the various properties of each algorithm with respect to the improvements provided by its quantum implementation. We will also evaluate the practicality of implementation of these quantum algorithms. All of this is in effort to conclude if the field of Quantum Data Science is mature enough to begin the transition into mainstream usage. 
 \newline
 \indent This paper will ultimately serve as a benchmark on the the ability of Quantum Data Science to implement and improve basic algorithms of Classic Data Science. The rest of the paper is as follows: In Section II, we introduce important background high level information on Quantum Computing as well as each of the Classic Data Science algorithms examined in this paper. In Section 3, we derive quantum equivalents to the classic algorithms introduced in Section 2. In Section 4, we evaluate classic and quantum algorithms against one another as well as quantum algorithm improvements against the properties of the algorithms. In Section 5, we draw our final conclusions about the current state of Quantum Data Science.    
 \section{Background Information}
 
 \subsection{Quantum Computing}
-In order to properly understand these algorithms, first we must understand the basics of quantum computing. Quantum algorithms tend to provide large computational speed ups to computers due to the nature of their data representation. Due to quantum particles being held in superposition between multiple possible states, we can execute operations on multiple states at the same time \cite{b5}. In a classic setting, you have a Turing machine in a single state, which when feed an instruction, evolves into another single state \cite{b9}. In a quantum setting, you have a Turing machine existing in multiple states, that when feed an operation, can enter into multiple new states in parallel.   
+In order to properly understand these algorithms, first we must understand the basics of Quantum Computing. Quantum algorithms tend to provide large computational speed ups to computers due to the nature of their data representation. Due to quantum particles being held in superposition between multiple possible states, we can execute operations on multiple states at the same time \cite{b5}. In a classic setting, you have a Turing machine in a single state, which when feed an instruction, evolves into another single state. In a quantum setting, you have a Turing machine existing in multiple states, that when feed an operation, can enter into multiple new states in parallel \cite{b9}.   
 \subsubsection{Quantum Representation of Data}
-We have already touched on how quantum bits or qubits represent data in a quantum system. We will formalize this representation here. A qubit can be thought of as a single classic bit that exists in a hybrid state between a 0 and a 1, known as a \emph{superposition} between 0 and 1. We represent that state in the following way:
+We have already touched on how quantum bits or qubits represent data in a quantum system. We will formalize this representation here. A qubit can be thought of as a single classic bit that exists in a hybrid state between a 0 and a 1, known as a \emph{superposition} between state 0 and state 1. We represent that state in the following way:
 \begin{align*}
 \ket{\Psi} = \alpha\ket{0} + \beta\ket{1}
 \end{align*}
-In this form, $\alpha$ and $\beta$ are complex real numbers referred to as \emph{probability amplitudes}. According to a postulate of Quantum Mechanics know as Born's Rule, the probability that a quantum particle will collapse from its superposition into state 0 or state 1 is $|\alpha|^2$ and $|\beta|^2$ respectively. (Note measurement of quantum data will be described in a later section). In this form, the classic states 0 and 1 are described in \emph{Dirac Notation} as $\ket{0}$ and $\ket{1}$ where:
+In this form, $\alpha$ and $\beta$ are complex real numbers referred to as \emph{probability amplitudes}. According to a postulate of Quantum Mechanics know as Born's Rule, the probability that a qubit will collapse from its superposition into state 0 or state 1 is $|\alpha|^2$ and $|\beta|^2$ respectively. (Note measurement of quantum data will be described in a later section). In this form, the classic bit states 0 and 1 are described in \emph{Dirac Notation} as $\ket{0}$ and $\ket{1}$ where:
 \begin{align*}
 \ket{0}=\begin{vmatrix}
 1\\
@@ -72,7 +71,7 @@ In this form, $\alpha$ and $\beta$ are complex real numbers referred to as \emph
 1\\
 \end{vmatrix}
 \end{align*}
-\indent However, qubits can also be represented in a \emph{Density Matrix} often referred to as $\rho$. This matrix represents a combination of various pure quantum states and is used when we are missing information on the state of the quantum system. For our sake, a pure quantum state is simply one where know the exact state of the qubit. We can create a density matrix for a quantum system to represent its information using all of its possible quantum states and the probability \emph{p} it is in that respective state \emph{$\ket{\psi}$} by the following equation: 
+\indent However, qubits can also be represented in a \emph{Density Matrix} often referred to as $\rho$. This matrix represents a combination of various pure quantum states and is used when we are missing information on the state of the quantum system. For our sake, a pure quantum state is simply one where know the exact state of the qubit. We can create a density matrix for a quantum system to represent its information using all of its possible quantum states and the probability \emph{p} it is in each respective state \emph{$\ket{\psi}$} by the following equation: 
 \begin{align*}
 \rho = \sum_{i}  = p_i \ket{\psi_i} \otimes \bra{\psi_i}
 \end{align*}
@@ -105,14 +104,14 @@ which we can rewrite in vector notation as:
 \beta\\
 \end{vmatrix} 
 \end{align*}
-We can then proceed to apply the quantum not operator get to this piece of particle in superposition. 
+We can then proceed to apply the quantum not operator upon this qubit. 
 \begin{align*}
     \emph{X} = \begin{vmatrix}
     0 & 1 \\
     1 & 0 \\
     \end{vmatrix}
 \end{align*}
-This operator flips the probability amplitudes of the particle without collapsing its superposition.
+This operator flips the probability amplitudes of the qubit without collapsing its superposition.
 \begin{align*}
     \emph{X} * \begin{vmatrix}
 \alpha\\
@@ -138,20 +137,20 @@ Any matrix may be a valid quantum operator so long as it is unitary: $U^\dagger 
 \end{align*}
 It is also worth noting that every quantum operator is fully reversible \cite{b9}.
 \subsubsection{Measurement of Quantum Data}
-The measurement of a qubit is a destructive operation. Since as we have established, the qubit exists in a superposition of two states, when it is observed, it will collapse into one of its two possible states with probability $|\alpha|^2$ or $|\beta|^2$. Once this happens the superposition of the qubit is lost and it exists in one of its classic states. This operation is only reversible if the measurement reveals no information about the qubit \cite{b9}. 
+The measurement of a qubit is a destructive operation. Since as we have established, the qubit exists in a superposition of two states, when it is observed, it will collapse into one of its two possible states with probability $|\alpha|^2$ or $|\beta|^2$. Once this happens the superposition of the qubit is lost and it exists only in one of its classic states. This operation is only reversible if the measurement reveals no information about the qubit \cite{b9}. 
 
 \subsection{Classic Data Science Algorithms}
-Next, we will review the data science algorithms to better understand the equations we are attempting to mirror with our quantum logic. The following algorithms fall into two categories: Supervised and Unsupervised. Supervised Algorithms are those which require labeled data for training. This means that one will feed the algorithm both and X and Y data set. After this, he/she will give the algorithm new X values, and the algorithm will attempt to generate corresponding new Y values for the data set. Unsupervised algorithms can simply be fed X data and will attempt to transform or relate the data in some meaningful way. 
+Next, we will review the data science algorithms to better understand the equations we are attempting to mirror with our quantum logic. The following algorithms fall into two categories: Supervised and Unsupervised. Supervised Algorithms are those which require labeled data for training. This means that A data scientist would feed the algorithm both and X and Y data set. After this, he/she would give the algorithm new X values, and the algorithm would attempt to generate corresponding new Y values for the data set. Unsupervised algorithms can simply be fed X data and will attempt to transform or relate the data in some meaningful way. 
 \subsubsection{K-Means Clustering}
-The goal of K-Means clustering is to find \emph{K} clusters of data in a pool of unlabeled data. It is an unsupervised clustering algorithm. Assuming we had a pool of two dimensional unlabeled data, to preform a K-Means clustering, we would: First, create K random points of data, called centroids. Next for every vector of data we would calculate its euclidean distance from each centroid vector with the following formula:
+The goal of K-Means clustering is to find \emph{K} clusters of data in a pool of unlabeled data. This makes it an unsupervised clustering algorithm. Assuming we had a pool of two dimensional unlabeled data, to preform a K-Means clustering, we would: First, create K random points of data, called centroids. Next for every vector of the data we would calculate its euclidean distance from each centroid vector with the following formula:
 \begin{align*}
 d_{euclidean} = \sqrt{(\overline{x}_{data} - \overline{x}_{centroid})^2}
 \end{align*}
-Next, we reassign each centroid to be the mean of all the data points it contains  with the following formula:
+Then, we reassign each centroid to be the mean of all the data points assigned to it with the following formula:
 \begin{align*}
 \overline{x}_{centroid} + 1 = \frac{1}{\overline{x}_{centroid}}  \sum_{\bar{x}\in\overline{x}_{centroid}} \bar{x}
 \end{align*}
-We will repeat this process either a number of steps \emph{n} or until the difference between the current centroid and the prior centroid is below a certain tolerance threshold $\epsilon$ \cite{b10}. 
+We will repeat this process either a number of steps \emph{n} set by the user or until the difference between the current centroid and the prior centroid is below a certain tolerance threshold $\epsilon$ also set by the user\cite{b10}. 
 \subsubsection{Principal Component Analysis}
 Principal Component Analysis (PCA) is an unsupervised means of dimensionality reduction. To compute the PCA of a set of data of vectors $\bar{z}$ we must first compute the covariance matrix of $\bar{z}$ with the following equation:
 \begin{align*}
@@ -167,34 +166,34 @@ Covariance = \sum_i y_i\bar{c}_i\bar{c}_i^\dagger
 \end{align*}
 Now our dimensionality is reduced down to our number of principal components \cite{b7}. 
 \subsubsection{Decision Trees}
-Decision Trees are a supervised learning method used for both classification and regression problems. To create a Decision Tree, we first start with a set of tree of node size 1 containing all data. For all features \emph{F} in our node, we will calculate the entropy \emph{H} of each class \empin{C} in each feature. Entropy is a measure of the disorder of data and can be calculated as:
+Decision Trees are a supervised learning method used for both classification and regression problems. To create a Decision Tree, we first start with a set of tree of node size 1 containing all data. For all features \emph{F} in our node, we will calculate the entropy \emph{H} of each class \empin{C} in each feature. Entropy is simply a measure of the disorder of the data and can be calculated as:
 \begin{align*}
     H(F) = \sum_{i\in C} -p_i log(p_i)
 \end{align*}
-Where \emph{$p_i$} is the probability of each class \emph{c} $\in$ \emph{C}. Our goal is to minimize \emph{H}. So we will pick the Feature with the minimal \emph{H} and split our node into \emph{c} children nodes along each class \emph{C} of the feature with the least entropy. We will repeat this algorithm until the entropy of each feature is below a tolerance $\epsilon$ or the algorithm has run for a set number of sets \emph{n} defined by the user \cite{b11}. 
+Where \emph{$p_i$} is the probability of each class \emph{c} $\in$ \emph{C}. Our goal is to minimize \emph{H}. So we will pick the Feature with the minimal \emph{H} and split our node into \emph{c} children nodes along each class \emph{C} of the feature with the smalelst entropy. We will repeat this algorithm until the entropy of each feature is below a tolerance $\epsilon$ or the algorithm has run for a set number of sets \emph{n} defined by the user \cite{b11}. 
 
 \section{Derivation of Quantum Data Science Algorithms}
-In this section, I will begin my working through the mathematics behind each of my chosen Quantum Data Science Algorithms. However, before I begin my algorithmic breakdown, I will first examine the inherit benefits of loading classic data in as qubits rather than bits. I feel this is an important strength of quantum systems and doing my survey without mentioning it would be incomplete. I plan to go over the circuit in \cite{b12} to show that N bits can be loaded into a quantum system as only $log_2(N)$ qubits.   
+In this section, I will begin my working through the mathematics behind each of my chosen Quantum Data Science Algorithms. However, before I begin my algorithmic breakdown, I will first examine the inherit benefits of loading classic data in as qubits rather than bits. I feel this is an important strength of quantum systems and doing my survey without mentioning it would leave it incomplete. I plan to go over the circuit in \cite{b12} to show that N bits can be loaded into a quantum system as only $log_2(N)$ qubits.   
 \subsection{Quantum K-Means}
 Here I plan to break down the mathematics powering the Quantum K-Means as described in \cite{b6}. I will begin by explaining the quantum operation in the paper knows as "Swap Test" and how it is used to measure distances between quantum state vectors for cluster assignment and centroid placement \cite{b6}.
 \subsection{Quantum Principal Component Analysis}
 Here I plan to break down the mathematics powering the Quantum Principal Components Analysis as described in \cite{b7}. This will involve describing the usage of the density matrix exponentiation and the quantum phase estimation algorithm \cite{b7}.
 \subsection{Quantum Decision Trees}
-Here I plan to break down the mathematics powering the Quantum Decision Tree described in \cite{b13}. If time permits I will also analyze the mathematics of the Hybrid Quantum Decision Tree as described in \cite{b14}. This will involve an overview of quantum entropy, explaining how it can be evaluated with a density matrix without collapsing the superposition of the particles in the density matrix. 
+Here I plan to break down the mathematics powering the Quantum Decision Tree described in \cite{b13}. If time permits I will also analyze the mathematics of the Hybrid Quantum Decision Tree as described in \cite{b14}. This will involve an overview of quantum entropy, and explaining how it can be evaluated with a density matrix without collapsing the superposition of the particles in the density matrix. 
 
 
 \subsection{Results}
 I will begin this section with a table comparing the algorithm complexity of the classic and quantum versions of each algorithm taken from their respective paper. I will not be deriving the complexities of each algorithm however as complexity modeling for quantum algorithms falls outside of the scope of this paper. My primary anticipation is that  the quantum algorithm complexities will all be massive improvements on the classical algorithms. However, I intended to show that algorithmic complexities are not the single benchmark for each algorithm. 
 \subsection{K-Means}
-In this section I will begin by comparing the classic algorithmic complexity of K-Means $O(MNK)$ to its quantum equivalent $O(MKlog(N))$ where \emph{M} is the number of data points, \emph{N} is the number of features and \emph{K} is the number of clusters. I will then use explain the "Curse Of Dimensionality" for this algorithm. As \emph{N} increases, it becomes less and less effective \cite{b15}. The quantum algorithm becomes a more viable choice as \emph{N} continues to increase, likewise the algorithm becomes a less viable choice overall. This limits the practicality of the argument that the quantum algorithm is better due to its lower complexity bound, since this improvement is only based on \emph{N}. I plan to try and find more properties of this algorithm and compare them to the respective implementations. If I can not find more, I will use my current viable one and compare percent savings on run times of low dimensional data. 
+In this section I will begin by comparing the classic algorithmic complexity of K-Means $O(MNK)$ to its quantum equivalent $O(MKlog(N))$ where \emph{M} is the number of data points, \emph{N} is the number of features and \emph{K} is the number of clusters. I will then explain the "Curse Of Dimensionality" for this algorithm. As \emph{N} increases, it becomes less and less effective \cite{b15}. The quantum algorithm becomes a more viable choice as \emph{N} continues to increase, likewise the algorithm becomes a less viable choice overall. This limits the practicality of the argument that the quantum algorithm is better due to its lower complexity bound, since this improvement is only based on \emph{N}. I plan to try and find more properties of this algorithm and compare these properties to the quantum implementation's improvements. If I can not find more, I will use my current viable one and compare percent savings on run times of low dimensional data. 
 
 \subsection{Principal Component Analysis}
-In the implementation of Quantum PCA, it currently only functions if there is a low number of Principal Components relative to the original dimensionality. I plan to examine common use cases for PCA and attempt to find if this is often the case for the usage of the algorithm currently. If I am unable to do this, I will instead focus on possible constraints of its implementation, such as the necessity of a quantum oracle \cite{b7}. I plan to examine if it is viable/possible to implement in reality.  
+In the implementation of Quantum PCA, it currently only functions if there is a low number of Principal Components relative to the original dimensionality. I plan to examine common use cases for PCA and attempt to find if this is often the case for the usage of the algorithm currently. If I am unable to do this, I will instead focus on possible constraints of its implementation, such as the necessity of a quantum oracle \cite{b7}. I plan to examine if it is viable/possible to implement this oracle in reality.  
 \subsection{Decision Trees}
 I have found no constraints that might limit the effectiveness of decision trees. If I am unable to find any, I shall simply compare algorithm complexities and speak of how the quantum version is faster/more space efficient, which I expect it to be. 
 
 \section{Conclusion}
-We wished to write this paper in order to examine Quantum Data Science in a more grounded state. We wanted to see not what the field could be, but what it currently is, in an effort to properly evaluate it. In this paper we will attempt to examine the mathematics behind several quantum implementation of classic Data Science algorithms. If we find these algorithms to be implementable in the real world with better algorithmic complexity relative to the constraints of the algorithms themselves, we will be able to conclude that the field of Quantum Data Science is ready for mainstream adoption. If not, we will be able to point to sub-areas of research in need of growth in the field.  
+We wished to write this paper in order to examine Quantum Data Science in a more grounded state. We wanted to see not what the field could be, but what it currently is, in an effort to properly evaluate it. In this paper we will have attempted to examine the mathematics behind several quantum implementation of classic Data Science algorithms. If we find these algorithms to be implementable in the real world with better algorithmic complexity relative to the constraints of the algorithms themselves, we will be able to conclude that the field of Quantum Data Science is ready for mainstream adoption. If not, we will be able to point to sub-areas of research in need of growth in the field before mainstream adoptions.  
 
 \begin{thebibliography}{00}
 
