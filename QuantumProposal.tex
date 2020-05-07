@@ -175,7 +175,76 @@ Where \emph{$p_i$} is the probability of each class \emph{c} $\in$ \emph{C}. Our
 \section{Derivation of Quantum Data Science Algorithms}
 In this section, I will begin my working through the mathematics behind each of my chosen Quantum Data Science Algorithms. However, before I begin my algorithmic breakdown, I will first examine the inherit benefits of loading classic data in as qubits rather than bits. I feel this is an important strength of quantum systems and doing my survey without mentioning it would leave it incomplete. I plan to go over the circuit in \cite{b12} to show that N bits can be loaded into a quantum system as only $log_2(N)$ qubits.   
 \subsection{Quantum K-Means}
-Here I plan to break down the mathematics powering the Quantum K-Means as described in \cite{b6}. I will begin by explaining the quantum operation in the paper knows as "Swap Test" and how it is used to measure distances between quantum state vectors for cluster assignment and centroid placement \cite{b6}.
+Before we begin our breakdown of Quantum K-Means, we must go over two important quantum gates. The first is the Hadamard Gate. It is represented by the matrix:
+\begin{align*}
+\frac{1}{\sqrt{2}}
+    \begin{vmatrix}
+    1 & 1 \\
+    1 & -1 \\
+    \end{vmatrix} 
+\end{align*} 
+This gate takes a qubit in a basis state and places it in superposition between the basis states with a probability amplitude of $\frac{1}{\sqrt{2}}$ for each basis state. The next gate we will need is the swap gate. It is represented by the matrix: \begin{align*}
+    \begin{vmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 0 & 1 & 0 \\
+    0 & 1 & 0 & 0 \\
+    0 & 0 & 0 & 1\\
+    \end{vmatrix} 
+\end{align*} 
+This gate is applied to qubits in superposition between $\ket{0}$ and $\ket{1}$. It can be used to swap two qubits in the $\ket{1}$ position. For example, if your qubit in the $\ket{1}$ position was $\ket{1,x,y}$ after a swap gate, the qubit in $\ket{1}$ position would be $\ket{1,y,x}$ \cite{b5}
+\newline
+\indent With these gates, we can create what is known as a "Swap Test". This test allows us to find $\bra{x}\ket{y}$ without needing to measure either $\ket{x}$ or $\ket{y}$ thus avoiding collapsing them. To preform a swap test, we simply:
+\noindent\rule{\columnwidth}{1pt}
+\newline
+   Initialize a qubit with a control basis qubit: \newline 
+ $ \ket{\theta_0} = \ket{0,x,y} $ \newline \newline
+   Apply a Hadamard Gate to split this qubit into superposition: \newline
+ $  \ket{\theta_1} = \frac{1}{\sqrt{2}}(\ket{0,x,y}+ \ket{1,x,y})  $ \newline  \newline
+   Apply a Swap Gate: \newline 
+ $  \ket{\theta_2} = \frac{1}{\sqrt{2}}(\ket{0,x,y}+ \ket{1,y,x}) $ \newline \newline
+   Then another Hadamard Gate: \newline 
+ $  \ket{\theta_3} = \frac{1}{2}(\ket{0}(\ket{a,b}+\ket{b,a}) + \ket{1}(\ket{a,b}-\ket{b,a}) $ \newline \newline
+ Now we simply measure our control qubit \newline
+ $P(\ket{0}) =|.5 \bra{0}\ket{0}(\ket{x,y} + \ket{y,x}) + .5\bra{0}\ket{1}(\ket{x,y}-\ket{y,x})|^2$  Since $\ket{0}$ and $\ket{1}$ are orthogonal the second term disappears and our result simplifies to: \newline
+ $P(\ket{0}) = .5 + .5|\bra{a}\ket{b}|^2$ \newline
+\noindent\rule{\columnwidth}{1pt}
+\indent We know if $P(\ket{0})$ = .5 for our control qubit, our qubits $x$ and $y$ are orthogonal. We do however require identical sets of $x$ and $y$ qubits such that we can repeat this measurement to accurately determine the probability. We can use $\bra{x}\ket{y}$ to measure distance between the x and y if they are prepared in the proper initial superposition. This is done with a subroutine called "DistCalc". To perform this: 
+\noindent\rule{\columnwidth}{1pt}
+Assume we have two qubits in super position:
+$
+\ket{\lambda} = \frac{1}{\sqrt{2}}(\ket{0,x} + \ket{1,y}) \\
+\ket{\sigma} = \frac{1}{\sqrt{D}}(|x|\ket{0} + |y|\ket{1})
+$ \newline \newline
+Where D is: $D = |x|^2+|y|^2$. \newline \newline 
+We know that $\bra{\sigma}\ket{\lambda}$
+$
+ = \frac{1}{\sqrt{2D}}(|x|\ket{x} - |b|\ket{b})
+$ \newline \newline
+Which can be rearranged to: 
+$
+|x-y|^2 = 2D|\bra{\sigma}\ket{\lambda}|^2
+$ \newline \newline
+Where $|x-y|^2$ is the distance between x and y. We can calculate $\bra{\sigma}\ket{\lambda}$ with our Swap Test. 
+\newline
+\noindent\rule{\columnwidth}{1pt}
+\newline
+\indent Using this "DistCalc" method, we are able to perform our K-Means Clustering. \newline
+\noindent\rule{\columnwidth}{1pt}
+Loop: \newline
+\indent For each point p in P; \newline
+\indent \indent Calculate distance from p to each centroid with \newline 
+\indent \indent DistCalc(p, centroid) \newline
+\indent \indent Assign p to cluster of closest centroid \newline
+\indent For each c in Clusters C \newline
+\indent \indent For each point p in  c \newline
+\indent \indent \indent Calculate mean value of all points P \newline
+\indent \indent \indent Set value of c centroid to mean \newline
+\indent If Stopping Criteria is met: \newline
+\indent \indent Stop \newline
+\indent Else: \newline
+\indent\indent Loop \newline
+\noindent\rule{\columnwidth}{1pt}
+\cite{b6}.
 \subsection{Quantum Principal Component Analysis}
 Here I plan to break down the mathematics powering the Quantum Principal Components Analysis as described in \cite{b7}. This will involve describing the usage of the density matrix exponentiation and the quantum phase estimation algorithm \cite{b7}.
 \subsection{Quantum Decision Trees}
@@ -193,7 +262,7 @@ In the implementation of Quantum PCA, it currently only functions if there is a 
 I have found no constraints that might limit the effectiveness of decision trees. If I am unable to find any, I shall simply compare algorithm complexities and speak of how the quantum version is faster/more space efficient, which I expect it to be. 
 
 \section{Conclusion}
-We wished to write this paper in order to examine Quantum Data Science in a more grounded state. We wanted to see not what the field could be, but what it currently is, in an effort to properly evaluate it. In this paper we will have attempted to examine the mathematics behind several quantum implementation of classic Data Science algorithms. If we find these algorithms to be implementable in the real world with better algorithmic complexity relative to the constraints of the algorithms themselves, we will be able to conclude that the field of Quantum Data Science is ready for mainstream adoption. If not, we will be able to point to sub-areas of research in need of growth in the field before mainstream adoptions.  
+We wished to write this paper in order to examine Quantum Data Science in a more grounded state. We wanted to see not what the field could be, but what it currently is, in an effort to properly evaluate it. In this paper we will have attempted to examine the mathematics behind several quantum implementation of classic Data Science algorithms. If we find these algorithms to be implementable in the real world with better algorithmic complexity relative to the constraints of the algorithms themselves, we will be able to conclude that the field of Quantum Data Science is ready for mainstream adoption. If not, we will be able to point to sub-areas of research in need of growth in the field before mainstream adoption.  
 
 \begin{thebibliography}{00}
 
